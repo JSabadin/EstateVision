@@ -1,11 +1,14 @@
 from flask import Flask
 import psycopg2
-import os  # Import os to read environment variables
+import os
 
 app = Flask(__name__)
 
 @app.route('/')
 def show_flats():
+    """
+    Show the list of flats from the database as HTML with images and titles. 
+    """
     # Read database connection parameters from environment variables
     conn_params = {
         'host': os.getenv('POSTGRES_HOST'),
@@ -13,9 +16,9 @@ def show_flats():
         'user': os.getenv('POSTGRES_USER'),
         'password': os.getenv('POSTGRES_PASSWORD')
     }
-        # Connect to the database
-    conn = psycopg2.connect(**conn_params)
-    cursor = conn.cursor()
+    # Connect to the database
+    connection = psycopg2.connect(**conn_params)
+    cursor = connection.cursor()
 
     # Execute query
     cursor.execute("SELECT title, image_url FROM flats;")
@@ -29,7 +32,7 @@ def show_flats():
 
     # Close the database connection
     cursor.close()
-    conn.close()
+    connection.close()
 
     return f"<h1>List of Flats</h1>{flats_info}"
 
