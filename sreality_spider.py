@@ -18,7 +18,7 @@ class RealitySpider(scrapy.Spider):
         """
         # Read database connection parameters from environment variables
         conn_params = {
-            'host': os.getenv('POSTGRES_HOST', 'localhost'),  # Default to 'localhost' if not set
+            'host': os.getenv('POSTGRES_HOST'), 
             'dbname': os.getenv('POSTGRES_DB'),
             'user': os.getenv('POSTGRES_USER'),
             'password': os.getenv('POSTGRES_PASSWORD')
@@ -50,7 +50,7 @@ class RealitySpider(scrapy.Spider):
         response_json = json.loads(response.text)
         # Iterate through each flat in the response
         for flat in response_json.get('_embedded').get('estates'):
-            title = re.sub(r'\s+', ' ', flat.get('name'))  # Replace multiple whitespace characters with a single space
+            title = re.sub(r'\s+', ' ', flat.get('name'))  # Clean the title
             image_url = flat.get('_links').get('images')[0].get('href')  # Extract the URL of the image
             self.items_buffer.append((title, image_url))  # Add the item to the buffer
 
