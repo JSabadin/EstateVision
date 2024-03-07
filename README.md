@@ -7,7 +7,7 @@ EstateVision is a web scraping and data display project that scrapes real estate
 To run this project, you'll need Docker and Docker Compose installed on your system.
 
 1. Clone the repository to your local machine.
-2. Navigate to the project directory where the `docker-compose.yml` file is located.
+2. Navigate to the project directory where the `compose.yaml` file is located.
 3. Run the project using Docker Compose: docker-compose up
 
 Docker will build the images and start the containers necessary for the Scrapy spider and Flask application. 
