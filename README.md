@@ -19,9 +19,9 @@ Once the Docker containers are running, you can view the scraped data by visitin
 This page will display the first 500 scraped real estate listings with their titles and images.
 
 ## Project Structure
-- `app.py`: The Flask application file.
-- `run_spider.py`: Script to initiate the Scrapy spider.
-- `sreality_spider.py`: The Scrapy spider that scrapes the real estate data.
-- `requirements.txt`: The required Python libraries.
-- `Dockerfile`: Dockerfile for building the Flask application container.
-- `compose.yaml`: Docker Compose file to orchestrate the containers.
+- `app.py`: Flask app to display scraped data.
+- `run_spider.py`: Runs the Scrapy spider.
+- `sreality_spider.py`: Scrapy spider for real estate listings.
+- `requirements.txt`: Lists dependencies.
+- `Dockerfile`: Instructions to build the app's Docker image.
+- `compose.yaml`: Configures the app's services.
